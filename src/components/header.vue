@@ -3,11 +3,19 @@
     <div class="logo"><div class="logo-img"></div></div>
     <div class="center-container">
       <div class="tabs">
-        <div class="tab-item" v-for="(item, index) in tabName" :key="index">
+        <div
+          class="tab-item"
+          v-for="(item, index) in tabName"
+          :key="index"
+          @click="selectOption(index)"
+        >
           <router-link :to="item.link">{{ item.name }}</router-link>
         </div>
       </div>
-      <div class="marker"></div>
+      <div
+        class="marker"
+        :style="{ 'margin-left': activeIndex + 0.6 + 'rem' }"
+      ></div>
     </div>
     <div class="login"></div>
   </div>
@@ -28,29 +36,13 @@ const tabName: tabType[] = [
   { name: "搜索", link: "/search" },
 ];
 
-// let isClick = ref(false);
-// const clickTab = (e: EventTarget) => {
-//   isClick.value = !isClick.value;
-//   console.log(e);
-// };
-
-let init = () => {
-  let marker = document.querySelector(".marker");
-  let item = document.querySelectorAll(".tab-item a");
-  item.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      console.log(e.target.offsetLeft);
-
-      marker.style.left = e.target.offsetLeft + "px";
-      marker.style.width = e.target.offsetWidth + "px";
-    });
-  });
+let activeIndex = ref(0);
+const selectOption = (index: number) => {
+  activeIndex.value = index * 3.48;
 };
-onMounted(() => {
-  init();
-});
+onMounted(() => {});
 </script>
-<style lang="less" scoped>
+<style lang="less">
 .header {
   display: fixed;
   width: 100vw;
@@ -83,26 +75,20 @@ onMounted(() => {
       line-height: 56px;
       a {
         height: 53px;
+        color: aliceblue;
+        text-decoration: none;
       }
     }
   }
   .login {
     width: 15%;
   }
-  .marker {
-    height: 3px;
-    width: 20px;
-    background-color: rgb(48, 78, 211);
-    border-radius: 3px;
-  }
 }
-.noclick {
-  transform: translateX(140px);
-  transition-duration: 500ms;
-}
-
-.click {
-  transform: translateX(515px);
-  transition-duration: 500ms;
+.marker {
+  height: 3px;
+  width: 2.2rem;
+  background-color: rgb(48, 78, 211);
+  border-radius: 3px;
+  transition: 0.5s;
 }
 </style>
