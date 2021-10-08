@@ -9,5 +9,6 @@ body {
   padding: 0;
   margin: 0;
   font-family: Microsoft Yahei;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 </style>

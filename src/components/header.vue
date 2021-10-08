@@ -14,10 +14,12 @@
       </div>
       <div
         class="marker"
-        :style="{ 'margin-left': activeIndex + 0.6 + 'rem' }"
+        :style="{ 'margin-left': activeIndex * 25 + 4.5 + '%' }"
       ></div>
     </div>
-    <div class="login"></div>
+    <RouterLink class="login" to="/user">
+      <i class="iconfont icon-wode-copy" />
+    </RouterLink>
   </div>
 </template>
 
@@ -38,7 +40,7 @@ const tabName: tabType[] = [
 
 let activeIndex = ref(0);
 const selectOption = (index: number) => {
-  activeIndex.value = index * 3.48;
+  activeIndex.value = index;
 };
 onMounted(() => {});
 </script>
@@ -47,14 +49,14 @@ onMounted(() => {});
   display: fixed;
   width: 100vw;
   height: 56px;
-  background-color: rgb(207, 90, 90);
+  background-color: #1c2635;
   display: flex;
   .logo {
     width: 18%;
     padding: 15px;
     .logo-img {
       width: 56px;
-      background: url("../assets/logo.png") no-repeat center;
+      background: url("../assets/images/logo.png") no-repeat center;
       background-size: contain;
       height: 100%;
     }
@@ -68,27 +70,32 @@ onMounted(() => {});
     display: flex;
     font-size: 17px;
     color: rgba(240, 248, 255, 0.829);
-    height: 53px;
+
     .tab-item {
       flex: 1;
       text-align: center;
-      line-height: 56px;
       a {
         height: 53px;
+        line-height: 53px;
         color: aliceblue;
+        display: inline-block;
         text-decoration: none;
       }
     }
   }
   .login {
     width: 15%;
+    color: aliceblue;
   }
 }
 .marker {
   height: 3px;
   width: 2.2rem;
-  background-color: rgb(48, 78, 211);
-  border-radius: 3px;
-  transition: 0.5s;
+  background-color: aliceblue;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+.router-link-active {
+  font-weight: 700;
 }
 </style>

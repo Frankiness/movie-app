@@ -21,6 +21,10 @@ const routes: Array<RouteRecordRaw> = [
     path: "/search",
     component: () => import("../views/search.vue"),
   },
+  {
+    path: "/user",
+    component: () => import("../views/user.vue"),
+  },
 ];
 const router = createRouter({
   history: createWebHistory(),
