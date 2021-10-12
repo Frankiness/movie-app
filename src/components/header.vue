@@ -12,13 +12,10 @@
           <router-link :to="item.link">{{ item.name }}</router-link>
         </div>
       </div>
-      <div
-        class="marker"
-        :style="{ 'margin-left': activeIndex * 25 + 4.5 + '%' }"
-      ></div>
+      <div class="marker" :style="{ 'margin-left': activeIndex * 25 + 4.5 + '%' }"></div>
     </div>
     <RouterLink class="login" to="/user">
-      <i class="iconfont icon-wode-copy" />
+      <div class="user-icon"></div>
     </RouterLink>
   </div>
 </template>
@@ -46,7 +43,9 @@ onMounted(() => {});
 </script>
 <style lang="less">
 .header {
-  display: fixed;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 56px;
   background-color: #1c2635;
@@ -69,15 +68,15 @@ onMounted(() => {});
   .tabs {
     display: flex;
     font-size: 17px;
-    color: rgba(240, 248, 255, 0.829);
 
     .tab-item {
       flex: 1;
       text-align: center;
       a {
         height: 53px;
+        // width: 80px;
         line-height: 53px;
-        color: aliceblue;
+        color: #909399;
         display: inline-block;
         text-decoration: none;
       }
@@ -85,7 +84,11 @@ onMounted(() => {});
   }
   .login {
     width: 15%;
-    color: aliceblue;
+    .user-icon {
+      height: 55px;
+      background: url("../assets/images/user.png") no-repeat center;
+      background-size: 29px 29px;
+    }
   }
 }
 .marker {
@@ -97,5 +100,6 @@ onMounted(() => {});
 }
 .router-link-active {
   font-weight: 700;
+  color: aliceblue !important;
 }
 </style>
